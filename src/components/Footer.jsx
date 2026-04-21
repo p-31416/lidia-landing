@@ -1,6 +1,6 @@
 import { Instagram, Linkedin, ShieldCheck, Mail } from 'lucide-react';
 
-export default function Footer() {
+export default function Footer({ onOpenPrivacy }) {
   return (
     <footer className="bg-brand-primary border-t border-white/5 text-text-muted py-12 relative z-20">
       <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
@@ -14,16 +14,28 @@ export default function Footer() {
         </div>
 
         <div className="flex items-center gap-8">
-          <a href="#" className="hover:text-white transition-colors flex items-center gap-2 text-sm font-light">
+          <button 
+            onClick={onOpenPrivacy}
+            className="hover:text-white transition-colors flex items-center gap-2 text-sm font-light cursor-pointer"
+          >
             <ShieldCheck size={18} /> Privacidad
-          </a>
-          <a href="#" className="hover:text-white transition-colors flex items-center gap-2 text-sm font-light">
+          </button>
+          <a 
+            href="mailto:soporte@pitautech.com.ar" 
+            className="hover:text-white transition-colors flex items-center gap-2 text-sm font-light"
+          >
             <Mail size={18} /> Soporte Técnico
           </a>
         </div>
 
         <div className="flex items-center gap-6">
-          <a href="#" className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-brand-secondary/20 hover:border-brand-secondary/50 hover:text-white transition-all">
+          <a 
+            href="https://www.instagram.com/pitau.tech/" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-brand-secondary/20 hover:border-brand-secondary/50 hover:text-white transition-all"
+            title="Instagram @pitau.tech"
+          >
             <Instagram size={20} />
           </a>
           <a href="#" className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-brand-secondary/20 hover:border-brand-secondary/50 hover:text-white transition-all">

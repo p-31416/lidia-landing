@@ -5,9 +5,11 @@ import FeaturesMVP from './components/FeaturesMVP';
 import Roadmap from './components/Roadmap';
 import DemoModal from './components/DemoModal';
 import Footer from './components/Footer';
+import PrivacyPolicy from './components/PrivacyPolicy';
 
 function App() {
   const [isDemoOpen, setIsDemoOpen] = useState(false);
+  const [isPrivacyOpen, setIsPrivacyOpen] = useState(false);
 
   return (
     <div className="min-h-screen flex flex-col font-sans bg-brand-primary">
@@ -18,11 +20,13 @@ function App() {
         <Roadmap />
       </main>
       
-      <Footer />
+      <Footer onOpenPrivacy={() => setIsPrivacyOpen(true)} />
       
       {isDemoOpen && (
         <DemoModal onClose={() => setIsDemoOpen(false)} />
       )}
+
+      <PrivacyPolicy isOpen={isPrivacyOpen} onClose={() => setIsPrivacyOpen(false)} />
     </div>
   );
 }

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://lidia.pitautech.com.ar/sitemap.xml

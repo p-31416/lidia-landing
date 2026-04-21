@@ -10,11 +10,40 @@ export default function DemoModal({ onClose }) {
     propiedades: '1-50'
   });
 
-  const handleSubmit = (e) => {
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setTimeout(() => {
+    setLoading(true);
+
+    const webhookUrl = import.meta.env.VITE_N8N_WEBHOOK_URL;
+
+    try {
+      if (webhookUrl) {
+        const response = await fetch(webhookUrl, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            ...formData,
+            source: 'Agendar Demo Landing',
+            fecha: new Date().toISOString()
+          }),
+        });
+        
+        if (!response.ok) throw new Error('Network response was not ok');
+      } else {
+        console.warn('VITE_N8N_WEBHOOK_URL no definida. Simulando envío para desarrollo...');
+        await new Promise(resolve => setTimeout(resolve, 1500));
+      }
       setSubmitted(true);
-    }, 800);
+    } catch (error) {
+      console.error('Error al enviar el formulario:', error);
+      alert('Hubo un error al procesar tu solicitud. Por favor, intenta de nuevo o escríbenos a nuestro Instagram @pitau.tech.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleChange = (e) => {
@@ -102,9 +131,12 @@ export default function DemoModal({ onClose }) {
 
               <button 
                 type="submit"
-                className="w-full py-4 mt-6 bg-white hover:bg-white/90 text-brand-primary rounded-xl font-bold flex items-center justify-center gap-2 transition-all cursor-pointer pulse-soft"
+                disabled={loading}
+                className={`w-full py-4 mt-6 bg-white hover:bg-white/90 text-brand-primary rounded-xl font-bold flex items-center justify-center gap-2 transition-all cursor-pointer ${loading ? 'opacity-70 cursor-wait' : 'pulse-soft'}`}
               >
-                Solicitar Acceso <ArrowRight size={20} />
+                {loading ? 'Enviando...' : (
+                  <>Solicitar Acceso <ArrowRight size={20} /></>
+                )}
               </button>
             </form>
           </>
