@@ -164,18 +164,32 @@ export default function Hero({ onOpenDemo }) {
             className="fade-in-initial fade-in-active pt-6 w-full flex flex-col gap-6"
             style={{ animationDelay: '1.1s' }}
           >
-            <button 
-              onClick={onOpenDemo}
-              className="pulse-soft relative inline-flex items-center justify-center gap-3 px-8 py-4.5 text-lg font-bold text-brand-primary bg-white rounded-xl overflow-hidden w-full sm:w-auto transition-transform hover:scale-[1.03] cursor-pointer"
-            >
-              <CalendarCheck className="relative z-10" size={22} />
-              <span className="relative z-10 tracking-wide">Reservar Demo</span>
-            </button>
+            <div className="flex flex-col gap-4">
+              <button 
+                onClick={onOpenDemo}
+                className="pulse-soft relative inline-flex items-center justify-center gap-3 px-8 py-4.5 text-lg font-bold text-brand-primary bg-white rounded-xl overflow-hidden w-full sm:w-auto transition-transform hover:scale-[1.03] cursor-pointer"
+              >
+                <CalendarCheck className="relative z-10" size={22} />
+                <span className="relative z-10 tracking-wide">Reservar Demo</span>
+              </button>
+              <p className="text-sm text-text-muted/80 font-medium pl-1">
+                Agendá una demostración gratuita de 20' y descubrí cuántas horas al día ahorrarás con LidIA trabajando para vos.
+              </p>
+            </div>
             
-            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6 opacity-80 text-text-muted">
-               <div className="flex items-center gap-2 text-sm"><CheckCircle2 className="text-brand-accent" size={18}/> Implementación en minutos</div>
-               <div className="hidden sm:block text-gray-600">•</div>
-               <div className="flex items-center gap-2 text-sm"><CheckCircle2 className="text-brand-accent" size={18}/> Entrenada con tu cartera</div>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-y-3 sm:gap-x-4 pt-4">
+               <div className="flex items-center gap-2 text-sm text-white/90 font-medium">
+                 <CheckCircle2 className="text-[#FF7A00]" size={18}/> 
+                 Implementado en pocos días
+               </div>
+               <div className="flex items-center gap-2 text-sm text-white/90 font-medium">
+                 <CheckCircle2 className="text-[#FF7A00]" size={18}/> 
+                 Entrenado con tu cartera
+               </div>
+               <div className="flex items-center gap-2 text-sm text-white/90 font-medium">
+                 <CheckCircle2 className="text-[#FF7A00]" size={18}/> 
+                 Llave en mano para WhatsApp
+               </div>
             </div>
           </div>
         </div>

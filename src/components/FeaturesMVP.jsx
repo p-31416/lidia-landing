@@ -1,4 +1,4 @@
-import { MessageCircle, BrainCircuit, Key, Clock, CalendarDays } from 'lucide-react';
+import { MessageCircle, BrainCircuit, Key, Clock, CalendarDays, Bell } from 'lucide-react';
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
 
 function FeatureCard({ icon, title, description, delay }) {
@@ -45,6 +45,11 @@ export default function FeaturesMVP() {
       icon: <CalendarDays className="text-brand-secondary" size={28} />,
       title: 'Agenda citas calificadas',
       description: 'Si el cliente muestra alto interés, agenda la visita guiada directamente en el calendario de tu equipo.'
+    },
+    {
+      icon: <Bell className="text-brand-accent" size={28} />,
+      title: 'Te reporta al instante',
+      description: 'Recibe notificaciones inmediatas de nuevos leads y chats etiquetados (compra, alquiler, humano) para tu control total.'
     }
   ];
 
