@@ -1,12 +1,13 @@
 import { Instagram, Linkedin, ShieldCheck, Mail } from 'lucide-react';
+import Logo from './Logo';
 
 export default function Footer({ onOpenPrivacy }) {
   return (
     <footer className="bg-brand-primary border-t border-white/5 text-text-muted py-12 relative z-20">
       <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
         
-        <div className="flex flex-col items-center md:items-start">
-          <span className="font-['Cinzel'] text-2xl font-bold text-white tracking-widest mb-1">LidIA</span>
+        <div className="flex flex-col items-center md:items-start gap-4">
+          <Logo className="h-8" />
           <p className="text-sm font-light text-center md:text-left text-white/50">
             Engineered by <span className="text-white font-medium">Pitau.Tech</span><br />
             — IA Real Estate Automation
