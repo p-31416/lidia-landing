@@ -5,7 +5,7 @@ export default function PrivacyPolicy({ isOpen, onClose }) {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6">
+    <div className="fixed inset-0 z-[110] flex items-center justify-center p-4 sm:p-6">
       <div className="absolute inset-0 bg-brand-primary/80 backdrop-blur-md" onClick={onClose}></div>
       
       <div className="relative bg-[#111B21] border border-white/10 w-full max-w-2xl max-h-[80vh] overflow-y-auto rounded-3xl shadow-2xl p-8 sm:p-10 font-sans text-text-muted">

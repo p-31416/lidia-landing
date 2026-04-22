@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { X, ArrowRight, CheckCircle } from 'lucide-react';
 
-export default function DemoModal({ onClose }) {
+export default function DemoModal({ onClose, onOpenPrivacy }) {
   const [submitted, setSubmitted] = useState(false);
   const [formData, setFormData] = useState({
     nombre: '',
@@ -180,7 +180,7 @@ export default function DemoModal({ onClose }) {
                   className="mt-1 w-4 h-4 rounded border-white/10 bg-transparent text-brand-secondary focus:ring-brand-secondary cursor-pointer"
                 />
                 <label htmlFor="privacy" className="text-xs text-text-muted leading-tight cursor-pointer">
-                  Acepto la <span className="text-white underline">Política de Privacidad</span> y autorizo el tratamiento de mis datos para la demo de LidIA.
+                  Acepto la <button type="button" onClick={onOpenPrivacy} className="text-white underline hover:text-brand-secondary transition-colors">Política de Privacidad</button> y autorizo el tratamiento de mis datos para la demo de LidIA.
                 </label>
               </div>
 

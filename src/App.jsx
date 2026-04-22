@@ -25,7 +25,10 @@ function App() {
       <Footer onOpenPrivacy={() => setIsPrivacyOpen(true)} />
       
       {isDemoOpen && (
-        <DemoModal onClose={() => setIsDemoOpen(false)} />
+        <DemoModal 
+          onClose={() => setIsDemoOpen(false)} 
+          onOpenPrivacy={() => setIsPrivacyOpen(true)}
+        />
       )}
 
       <PrivacyPolicy isOpen={isPrivacyOpen} onClose={() => setIsPrivacyOpen(false)} />
