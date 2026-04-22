@@ -7,145 +7,173 @@ export default function DemoModal({ onClose }) {
     nombre: '',
     email: '',
     inmobiliaria: 'Independiente',
+    otraInmobiliaria: '',
     whatsapp: '',
     ciudad: '',
     propiedades: '1-50'
   });
 
   const [loading, setLoading] = useState(false);
+  const [showOtroInput, setShowOtroInput] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
 
-    const webhookUrl = import.meta.env.VITE_N8N_WEBHOOK_URL;
+    // Get URL and ensure it's not just an empty string
+    const rawUrl = import.meta.env.VITE_N8N_WEBHOOK_URL;
+    const webhookUrl = (rawUrl && rawUrl.length > 5) ? rawUrl : null;
 
     try {
       if (webhookUrl) {
-        await fetch(webhookUrl, {
+        console.log('Enviando a:', webhookUrl);
+        const response = await fetch(webhookUrl, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             ...formData,
+            inmobiliaria: formData.inmobiliaria === 'Otro' ? formData.otraInmobiliaria : formData.inmobiliaria,
             source: 'Agendar Demo Landing',
             fecha: new Date().toISOString()
           }),
         });
+        
+        if (!response.ok) throw new Error('Servidor no responde');
       } else {
-        console.warn('Webhook no configurado. Simulando...');
-        await new Promise(resolve => setTimeout(resolve, 1500));
+        console.warn('Webhook no configurado en variables de entorno. Simulando éxito...');
+        await new Promise(resolve => setTimeout(resolve, 2000));
       }
       
       setSubmitted(true);
       
-      // Auto-redirect to Instagram after 6 seconds
       setTimeout(() => {
         window.location.href = 'https://www.instagram.com/pitau.tech/';
       }, 6000);
 
     } catch (error) {
-      console.error('Error:', error);
-      alert('Hubo un error. Por favor, intenta de nuevo.');
+      console.error('Submission Error:', error);
+      // Even if it fails, if developers haven't set the URL, let's not block the user's "success" feel
+      // unless it's a real network error with a defined URL.
+      if (!webhookUrl) {
+        setSubmitted(true);
+      } else {
+        alert('Lo sentimos, hubo un problema de conexión. Por favor reintenta o escríbenos por Instagram.');
+      }
     } finally {
       setLoading(false);
     }
   };
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    if (name === 'inmobiliaria') {
+      setShowOtroInput(value === 'Otro');
+    }
+    setFormData({ ...formData, [name]: value });
   };
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
-      {/* Backdrop */}
       <div className="absolute inset-0 bg-brand-primary/95 backdrop-blur-md" onClick={onClose}></div>
 
-      {/* Modal Content */}
-      <div className="relative w-full max-w-xl bg-[#111B21] border border-white/10 rounded-[2rem] shadow-2xl p-8 md:p-12 overflow-y-auto max-h-[95vh]">
+      <div className="relative w-full max-w-xl bg-[#0D1520] border border-white/10 rounded-[2.5rem] shadow-2xl p-8 md:p-12 overflow-y-auto max-h-[95vh]">
         
-        <button onClick={onClose} className="absolute top-6 right-6 text-white/40 hover:text-white transition-colors">
-          <X size={24} />
+        <button onClick={onClose} className="absolute top-8 right-8 text-white/40 hover:text-white transition-colors">
+          <X size={28} />
         </button>
 
         {!submitted ? (
           <>
-            <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold text-white mb-2">Reserva tu Demo</h2>
-              <p className="text-text-muted font-light">Acceso prioritario al cerebro digital de tus ventas.</p>
+            <div className="text-center mb-10">
+              <h2 className="text-4xl font-bold text-white mb-3">Reserva tu Demo</h2>
+              <p className="text-text-muted font-light text-lg">Únete a la nueva era del Real Estate con IA.</p>
             </div>
 
-            <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="md:col-span-2">
-                <label className="block text-xs font-bold text-brand-secondary uppercase tracking-widest mb-2">Nombre completo *</label>
+                <label className="block text-xs font-bold text-brand-secondary uppercase tracking-[0.2em] mb-2">Nombre completo *</label>
                 <input required type="text" name="nombre" value={formData.nombre} onChange={handleChange}
-                  className="w-full px-5 py-3.5 rounded-xl bg-white/5 text-white border border-white/10 focus:border-brand-secondary outline-none transition-all"
-                  placeholder="Juan Pérez" />
+                  className="w-full px-6 py-4 rounded-2xl bg-white/5 text-white border border-white/10 focus:border-brand-secondary outline-none transition-all placeholder:text-white/10"
+                  placeholder="Ej: Alejandro Pitau" />
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-brand-secondary uppercase tracking-widest mb-2">Email *</label>
+                <label className="block text-xs font-bold text-brand-secondary uppercase tracking-[0.2em] mb-2">Email Profesional *</label>
                 <input required type="email" name="email" value={formData.email} onChange={handleChange}
-                  className="w-full px-5 py-3.5 rounded-xl bg-white/5 text-white border border-white/10 focus:border-brand-secondary outline-none transition-all"
-                  placeholder="juan@empresa.com" />
+                  className="w-full px-6 py-4 rounded-2xl bg-white/5 text-white border border-white/10 focus:border-brand-secondary outline-none transition-all placeholder:text-white/10"
+                  placeholder="tu@email.com" />
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-brand-secondary uppercase tracking-widest mb-2">WhatsApp (Opcional)</label>
+                <label className="block text-xs font-bold text-brand-secondary uppercase tracking-[0.2em] mb-2">WhatsApp (Opcional)</label>
                 <input type="tel" name="whatsapp" value={formData.whatsapp} onChange={handleChange}
-                  className="w-full px-5 py-3.5 rounded-xl bg-white/5 text-white border border-white/10 focus:border-brand-secondary outline-none transition-all"
+                  className="w-full px-6 py-4 rounded-2xl bg-white/5 text-white border border-white/10 focus:border-brand-secondary outline-none transition-all placeholder:text-white/10"
                   placeholder="+54 9 11 ..." />
               </div>
 
-              <div>
-                <label className="block text-xs font-bold text-brand-secondary uppercase tracking-widest mb-2">Inmobiliaria *</label>
+              <div className={showOtroInput ? 'md:col-span-1' : 'md:col-span-2'}>
+                <label className="block text-xs font-bold text-brand-secondary uppercase tracking-[0.2em] mb-2">Inmobiliaria *</label>
                 <select name="inmobiliaria" value={formData.inmobiliaria} onChange={handleChange}
-                  className="w-full px-5 py-3.5 rounded-xl bg-white/5 text-white border border-white/10 focus:border-brand-secondary outline-none transition-all">
-                  <option value="Independiente">Independiente</option>
-                  <option value="Remax">Remax</option>
-                  <option value="Century 21">Century 21</option>
-                  <option value="Otro">Otro</option>
+                  className="w-full px-6 py-4 rounded-2xl bg-[#1A2533] text-white border border-white/10 focus:border-brand-secondary outline-none transition-all appearance-none cursor-pointer">
+                  <option value="Independiente" className="bg-[#1A2533] text-white">Independiente</option>
+                  <option value="Remax" className="bg-[#1A2533] text-white">Remax</option>
+                  <option value="Century 21" className="bg-[#1A2533] text-white">Century 21</option>
+                  <option value="Otro" className="bg-[#1A2533] text-white">Otro / Cuál?</option>
                 </select>
               </div>
 
+              {showOtroInput && (
+                <div className="animate-in fade-in slide-in-from-left-4 duration-300">
+                  <label className="block text-xs font-bold text-brand-secondary uppercase tracking-[0.2em] mb-2">¿Cuál? *</label>
+                  <input required={showOtroInput} type="text" name="otraInmobiliaria" value={formData.otraInmobiliaria} onChange={handleChange}
+                    className="w-full px-6 py-4 rounded-2xl bg-white/5 text-white border border-white/10 focus:border-brand-secondary outline-none transition-all"
+                    placeholder="Nombre de la agencia" />
+                </div>
+              )}
+
               <div>
-                <label className="block text-xs font-bold text-brand-secondary uppercase tracking-widest mb-2">Ciudad / País *</label>
+                <label className="block text-xs font-bold text-brand-secondary uppercase tracking-[0.2em] mb-2">Ciudad / País *</label>
                 <input required type="text" name="ciudad" value={formData.ciudad} onChange={handleChange}
-                  className="w-full px-5 py-3.5 rounded-xl bg-white/5 text-white border border-white/10 focus:border-brand-secondary outline-none transition-all"
+                  className="w-full px-6 py-4 rounded-2xl bg-white/5 text-white border border-white/10 focus:border-brand-secondary outline-none transition-all placeholder:text-white/10"
                   placeholder="CABA, Argentina" />
               </div>
 
-              <div className="md:col-span-2">
-                <label className="block text-xs font-bold text-brand-secondary uppercase tracking-widest mb-2">Propiedades en Cartera</label>
+              <div className="md:col-span-1">
+                <label className="block text-xs font-bold text-brand-secondary uppercase tracking-[0.2em] mb-2">Propiedades</label>
                 <select name="propiedades" value={formData.propiedades} onChange={handleChange}
-                  className="w-full px-5 py-3.5 rounded-xl bg-white/5 text-white border border-white/10 focus:border-brand-secondary outline-none transition-all">
-                  <option value="1-50">1 a 50 propiedades</option>
-                  <option value="51-200">51 a 200 propiedades</option>
-                  <option value="200+">Más de 200 propiedades</option>
+                  className="w-full px-6 py-4 rounded-2xl bg-[#1A2533] text-white border border-white/10 focus:border-brand-secondary outline-none transition-all appearance-none cursor-pointer">
+                  <option value="1-50" className="bg-[#1A2533] text-white">1 a 50 props</option>
+                  <option value="51-200" className="bg-[#1A2533] text-white">51 a 200 props</option>
+                  <option value="200+" className="bg-[#1A2533] text-white">200+ props</option>
                 </select>
               </div>
 
               <button type="submit" disabled={loading}
-                className="md:col-span-2 py-4 mt-4 bg-white text-brand-primary rounded-xl font-bold flex items-center justify-center gap-2 hover:scale-[1.02] transition-all disabled:opacity-50 cursor-pointer">
-                {loading ? 'Procesando LidIA...' : 'Solicitar Acceso Prioritario'}
+                className="md:col-span-2 py-5 mt-4 bg-white text-[#0D1520] rounded-2xl font-black text-lg uppercase tracking-widest flex items-center justify-center gap-3 hover:bg-brand-secondary hover:text-white transition-all transform hover:scale-[1.02] active:scale-95 disabled:opacity-50 cursor-pointer shadow-xl">
+                {loading ? 'Sincronizando LidIA...' : 'Solicitar Acceso Ahora'}
               </button>
             </form>
           </>
         ) : (
-          <div className="text-center py-6">
-            <div className="flex justify-center mb-6">
-              <CheckCircle className="text-brand-secondary" size={60} />
+          <div className="text-center py-10">
+            <div className="flex justify-center mb-8">
+              <div className="w-24 h-24 bg-brand-secondary/20 rounded-full flex items-center justify-center border border-brand-secondary/40">
+                <CheckCircle className="text-brand-secondary" size={48} />
+              </div>
             </div>
-            <h2 className="text-3xl font-bold text-white mb-4">¡Solicitud Recibida!</h2>
-            <p className="text-text-muted mb-6 leading-relaxed">
-              Excelente {formData.nombre}. Comprobá tu bandeja de entrada; te hemos enviado la confirmación. Uno de nuestros asesores te contactará por WhatsApp a la brevedad.
+            <h2 className="text-4xl font-bold text-white mb-4">¡Solicitud Exitosa!</h2>
+            <p className="text-text-muted mb-8 leading-relaxed text-lg font-light">
+              Excelente {formData.nombre}, ya estamos preparando tu acceso.<br/>
+              <span className="text-white font-medium">Revisá tu mail en los próximos minutos.</span>
             </p>
-            <div className="p-4 bg-white/5 rounded-2xl border border-white/10 mb-8">
-              <p className="text-sm text-brand-secondary font-medium animate-pulse">
-                Redirigiendo a Instagram en unos segundos...
+            <div className="p-6 bg-white/5 rounded-3xl border border-white/10 mb-8 inline-block max-w-sm">
+              <p className="text-xs text-brand-secondary font-bold uppercase tracking-widest animate-pulse">
+                Redirigiendo a Instagram...
               </p>
             </div>
-            <a href="https://www.instagram.com/pitau.tech/" className="text-white/60 hover:text-white text-sm transition-colors decoration-brand-secondary underline underline-offset-4">
-              Ir a Instagram ahora
+            <br />
+            <a href="https://www.instagram.com/pitau.tech/" className="text-text-muted hover:text-white text-sm transition-colors border-b border-white/10 pb-1">
+              Ir a Instagram manualmente
             </a>
           </div>
         )}
