@@ -6,7 +6,14 @@ export default function Footer({ onOpenPrivacy }) {
       <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
         
         <div className="flex flex-col items-center md:items-start">
-          <span className="font-['Cinzel'] text-2xl font-bold text-white tracking-widest mb-1">LidIA</span>
+          <a 
+            href="https://www.linkedin.com/in/msolazcona/" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="group"
+          >
+            <span className="font-['Cinzel'] text-2xl font-bold text-white tracking-widest mb-1 group-hover:text-brand-secondary transition-colors">LidIA</span>
+          </a>
           <p className="text-sm font-light text-center md:text-left text-white/50">
             Engineered by <span className="text-white font-medium">Pitau.Tech</span><br />
             — IA Real Estate Automation

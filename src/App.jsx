@@ -6,6 +6,7 @@ import Roadmap from './components/Roadmap';
 import DemoModal from './components/DemoModal';
 import Footer from './components/Footer';
 import PrivacyPolicy from './components/PrivacyPolicy';
+import Navbar from './components/Navbar';
 
 function App() {
   const [isDemoOpen, setIsDemoOpen] = useState(false);
@@ -13,6 +14,7 @@ function App() {
 
   return (
     <div className="min-h-screen flex flex-col font-sans bg-brand-primary">
+      <Navbar />
       <main className="flex-grow">
         <Hero onOpenDemo={() => setIsDemoOpen(true)} />
         <Metrics />
