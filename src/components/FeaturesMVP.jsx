@@ -51,7 +51,7 @@ export default function FeaturesMVP() {
   const [headerVisible, headerRef] = useIntersectionObserver({ threshold: 0.5 });
 
   return (
-    <section className="py-24 bg-brand-primary relative">
+    <section id="features" className="py-24 bg-brand-primary relative">
       {/* Background Glow */}
       <div className="absolute top-40 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-brand-secondary/5 rounded-full blur-[100px] pointer-events-none"></div>
 

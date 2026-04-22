@@ -53,7 +53,7 @@ export default function Roadmap() {
   const [titleVisible, titleRef] = useIntersectionObserver({ threshold: 0.5 });
 
   return (
-    <section className="py-24 bg-brand-primary relative border-t border-white/5">
+    <section id="roadmap" className="py-24 bg-brand-primary relative border-t border-white/5">
       <div className="max-w-7xl mx-auto px-5 lg:px-6 relative z-10">
         <div className="flex flex-col lg:flex-row items-start justify-between gap-16">
           
