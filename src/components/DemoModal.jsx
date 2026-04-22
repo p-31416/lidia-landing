@@ -15,6 +15,13 @@ export default function DemoModal({ onClose }) {
 
   const [loading, setLoading] = useState(false);
   const [showOtroInput, setShowOtroInput] = useState(false);
+  const [privacyAccepted, setPrivacyAccepted] = useState(false);
+
+  // Sanitización básica para evitar XSS
+  const cleanInput = (str) => {
+    if (typeof str !== 'string') return str;
+    return str.replace(/[<>]/g, '').trim();
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -26,16 +33,31 @@ export default function DemoModal({ onClose }) {
 
     try {
       if (webhookUrl) {
-        console.log('Enviando a:', webhookUrl);
+        if (!privacyAccepted) {
+          alert('Por favor, acepta la política de privacidad para continuar.');
+          setLoading(false);
+          return;
+        }
+
+        // Sanitizar datos antes de enviar
+        const cleanData = {
+          nombre: cleanInput(formData.nombre),
+          email: cleanInput(formData.email),
+          inmobiliaria: formData.inmobiliaria === 'Otro' ? cleanInput(formData.otraInmobiliaria) : formData.inmobiliaria,
+          whatsapp: cleanInput(formData.whatsapp),
+          ciudad: cleanInput(formData.ciudad),
+          propiedades: formData.propiedades,
+          source: 'Agendar Demo Landing',
+          fecha: new Date().toISOString()
+        };
+
         const response = await fetch(webhookUrl, {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            ...formData,
-            inmobiliaria: formData.inmobiliaria === 'Otro' ? formData.otraInmobiliaria : formData.inmobiliaria,
-            source: 'Agendar Demo Landing',
-            fecha: new Date().toISOString()
-          }),
+          headers: { 
+            'Content-Type': 'application/json',
+            'X-Lidia-Api-Key': 'lidia_secure_v1_2026' // Validación de origen
+          },
+          body: JSON.stringify(cleanData),
         });
         
         if (!response.ok) throw new Error('Servidor no responde');
@@ -148,8 +170,22 @@ export default function DemoModal({ onClose }) {
                 </select>
               </div>
 
-              <button type="submit" disabled={loading}
-                className="md:col-span-2 py-5 mt-4 bg-white text-[#0D1520] rounded-2xl font-black text-lg uppercase tracking-widest flex items-center justify-center gap-3 hover:bg-brand-secondary hover:text-white transition-all transform hover:scale-[1.02] active:scale-95 disabled:opacity-50 cursor-pointer shadow-xl">
+              <div className="md:col-span-2 flex items-start gap-3 p-4 bg-white/5 rounded-2xl border border-white/5">
+                <input 
+                  required 
+                  type="checkbox" 
+                  id="privacy"
+                  checked={privacyAccepted}
+                  onChange={(e) => setPrivacyAccepted(e.target.checked)}
+                  className="mt-1 w-4 h-4 rounded border-white/10 bg-transparent text-brand-secondary focus:ring-brand-secondary cursor-pointer"
+                />
+                <label htmlFor="privacy" className="text-xs text-text-muted leading-tight cursor-pointer">
+                  Acepto la <span className="text-white underline">Política de Privacidad</span> y autorizo el tratamiento de mis datos para la demo de LidIA.
+                </label>
+              </div>
+
+              <button type="submit" disabled={loading || !privacyAccepted}
+                className="md:col-span-2 py-5 mt-2 bg-white text-[#0D1520] rounded-2xl font-black text-lg uppercase tracking-widest flex items-center justify-center gap-3 hover:bg-brand-secondary hover:text-white transition-all transform hover:scale-[1.02] active:scale-95 disabled:opacity-30 disabled:hover:scale-100 cursor-pointer shadow-xl">
                 {loading ? 'Sincronizando LidIA...' : 'Solicitar Acceso Ahora'}
               </button>
             </form>
