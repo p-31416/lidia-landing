@@ -179,8 +179,17 @@ export default function DemoModal({ onClose, onOpenPrivacy }) {
                   onChange={(e) => setPrivacyAccepted(e.target.checked)}
                   className="mt-1 w-4 h-4 rounded border-white/10 bg-transparent text-brand-secondary focus:ring-brand-secondary cursor-pointer"
                 />
-                <label htmlFor="privacy" className="text-xs text-text-muted leading-tight cursor-pointer">
-                  Acepto la <button type="button" onClick={onOpenPrivacy} className="text-white underline hover:text-brand-secondary transition-colors">Política de Privacidad</button> y autorizo el tratamiento de mis datos para la demo de LidIA.
+                <label className="text-xs text-text-muted leading-tight">
+                  Acepto la <span 
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      onOpenPrivacy();
+                    }} 
+                    className="text-white underline hover:text-brand-secondary transition-colors cursor-pointer"
+                  >
+                    Política de Privacidad
+                  </span> y autorizo el tratamiento de mis datos para la demo de LidIA.
                 </label>
               </div>
 
