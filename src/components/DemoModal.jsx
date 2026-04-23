@@ -68,6 +68,16 @@ export default function DemoModal({ onClose, onOpenPrivacy }) {
       
       setSubmitted(true);
       
+      // Tracking de Conversión
+      import('../hooks/useTracking').then(({ trackEvent }) => {
+        trackEvent('generate_lead', {
+          inmobiliaria: formData.inmobiliaria,
+          propiedades: formData.propiedades,
+          ciudad: formData.ciudad,
+          source: 'Demo Modal'
+        });
+      });
+      
       setTimeout(() => {
         window.location.href = 'https://www.instagram.com/pitau.tech/';
       }, 6000);
