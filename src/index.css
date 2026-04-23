@@ -1,15 +1,16 @@
 @import "tailwindcss";
 
 @theme {
-  --color-brand-primary: #0A0F1E;    /* Dark Background SaaS */
-  --color-brand-secondary: #75AADB;  /* Celeste Argentino Glow */
-  --color-brand-accent: #C9A84C;     /* Dorado suave Glow */
+  --color-brand-primary: #002147;    /* Azul Oscuro LidIA */
+  --color-brand-secondary: #00BCE4;  /* Celeste IA */
+  --color-brand-accent: #C9A84C;     /* Dorado suave (mantener para acentos) */
 
-  --color-bg-light: #121A2F;         /* Tarjetas y modales oscuros */
+  --color-bg-dark: #000B1A;          /* Deep Blue Background */
+  --color-bg-light: #001633;         /* Tarjetas y modales */
   --color-text-main: #FFFFFF;        /* Alto Contraste Principal */
-  --color-text-muted: #E8EDF5;       /* Muted legible (nunca gris bajo) */
+  --color-text-muted: #D1DDEB;       /* Muted legible */
   
-  --font-family-display: "Plus Jakarta Sans", sans-serif;
+  --font-family-display: "Outfit", sans-serif;
   --font-family-body: "Plus Jakarta Sans", sans-serif;
   
   --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -17,7 +18,7 @@
 
 @layer base {
   body {
-    background-color: var(--color-brand-primary);
+    background-color: var(--color-bg-dark);
     color: var(--color-text-main);
     font-family: var(--font-family-body);
     -webkit-font-smoothing: antialiased;

@@ -1,13 +1,12 @@
-import React from 'react';
-import Logo from './Logo';
+import BrandLogo from './BrandLogo';
 
 export default function Navbar() {
   return (
-    <nav className="fixed top-0 inset-x-0 z-50 bg-brand-primary/50 backdrop-blur-lg border-b border-white/5 py-4">
+    <nav className="fixed top-0 inset-x-0 z-50 bg-bg-dark/60 backdrop-blur-xl border-b border-white/5 py-3">
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-        <div className="flex items-center gap-3">
-          <Logo className="h-10" />
-        </div>
+        <a href="/" className="hover:opacity-90 transition-opacity">
+          <BrandLogo size="md" />
+        </a>
         
         <div className="hidden md:flex items-center gap-8">
           <a href="#features" className="text-sm font-medium text-text-muted hover:text-white transition-colors">Características</a>

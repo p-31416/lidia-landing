@@ -1,16 +1,19 @@
 import { Instagram, Linkedin, ShieldCheck, Mail } from 'lucide-react';
-import Logo from './Logo';
+import BrandLogo from './BrandLogo';
 
 export default function Footer({ onOpenPrivacy }) {
   return (
-    <footer className="bg-brand-primary border-t border-white/5 text-text-muted py-12 relative z-20">
-      <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
+    <footer className="bg-bg-dark border-t border-white/5 text-text-muted py-16 relative z-20 overflow-hidden">
+      {/* Decorative background glow */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-brand-secondary/20 to-transparent" />
+      
+      <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-10">
         
-        <div className="flex flex-col items-center md:items-start gap-4">
-          <Logo className="h-8" />
-          <p className="text-sm font-light text-center md:text-left text-white/50">
-            Engineered by <span className="text-white font-medium">Pitau.Tech</span><br />
-            — IA Real Estate Automation
+        <div className="flex flex-col items-center md:items-start group">
+          <BrandLogo size="lg" className="mb-4" />
+          <p className="text-sm font-light text-center md:text-left text-white/40 leading-relaxed">
+            Una solución inteligente de <span className="text-white/80 font-medium group-hover:text-brand-secondary transition-colors">Pitau Tech</span><br />
+            Liderando la automatización inmobiliaria.
           </p>
         </div>
 

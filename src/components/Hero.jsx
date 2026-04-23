@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { BotMessageSquare, CalendarCheck, CheckCircle2 } from 'lucide-react';
+import BrandLogo from './BrandLogo';
 
 const CHAT_SEQUENCE = [
   { type: 'lead', text: "Hola, busco un departamento de 2 ambientes en Palermo, hasta USD 150.000", time: "10:30" },
@@ -56,40 +57,40 @@ function WhatsAppMockup() {
       </div>
       
       {/* WhatsApp Header */}
-      <div className="bg-[#202C33] px-4 py-3 flex items-center gap-3 pt-10">
-        <div className="w-10 h-10 rounded-full bg-brand-secondary flex items-center justify-center text-white font-bold shrink-0">
-          L
+      <div className="bg-[#202C33] px-4 py-3 flex items-center gap-3 pt-10 border-b border-white/5">
+        <div className="w-10 h-10 rounded-full bg-brand-secondary/20 border border-brand-secondary/40 flex items-center justify-center shrink-0">
+          <BrandLogo iconOnly size="xs" />
         </div>
         <div>
           <h4 className="text-[#E9EDEF] font-semibold text-base leading-tight">Tu Inmobiliaria</h4>
-          <span className="text-xs text-[#8696A0]">LidIA · by Pitau.Tech</span>
+          <span className="text-xs text-brand-secondary font-medium tracking-wide">LidIA Agente Activo</span>
         </div>
       </div>
 
       {/* Chat Area */}
       <div className="bg-[#0B141A] p-4 h-[calc(100%-140px)] overflow-y-auto flex flex-col gap-3 relative scroll-smooth scrollbar-hide">
         {/* Date bubble */}
-        <div className="self-center bg-[#182229] px-3 py-1 rounded-lg text-xs text-[#8696A0] mb-2">Hoy</div>
+        <div className="self-center bg-[#182229] px-3 py-1 rounded-lg text-[10px] uppercase tracking-widest text-[#8696A0] mb-2 font-bold">Hoy</div>
         
         {messages.map((msg, idx) => (
           <div 
             key={idx} 
-            className={`flex flex-col max-w-[85%] rounded-2xl px-3 py-2 text-[14px] leading-snug shadow-sm ${
+            className={`flex flex-col max-w-[85%] rounded-2xl px-3 py-2.5 text-[14px] leading-snug shadow-lg ${
               msg.type === 'lead' 
                 ? 'self-end bg-[#005C4B] text-[#E9EDEF] rounded-tr-none' 
-                : 'self-start bg-[#202C33] text-[#E9EDEF] rounded-tl-none'
+                : 'self-start bg-[#202C33] text-[#E9EDEF] rounded-tl-none border-l-2 border-brand-secondary/50'
             }`}
           >
-            <span className="mb-1">{msg.text}</span>
-            <span className="text-[10px] text-white/50 self-end mt-0.5">{msg.time}</span>
+            <span className="mb-1 font-medium">{msg.text}</span>
+            <span className="text-[9px] text-white/30 self-end mt-0.5 font-bold tracking-tighter uppercase">{msg.time}</span>
           </div>
         ))}
 
         {isTyping && (
-          <div className="self-start bg-[#202C33] rounded-2xl rounded-tl-none px-4 py-3 flex items-center gap-1">
-            <div className="w-2 h-2 bg-[#8696A0] rounded-full animate-bounce [animation-delay:-0.3s]"></div>
-            <div className="w-2 h-2 bg-[#8696A0] rounded-full animate-bounce [animation-delay:-0.15s]"></div>
-            <div className="w-2 h-2 bg-[#8696A0] rounded-full animate-bounce"></div>
+          <div className="self-start bg-[#202C33] rounded-2xl rounded-tl-none px-4 py-3 flex items-center gap-1.5 border-l-2 border-brand-secondary/30">
+            <div className="w-1.5 h-1.5 bg-brand-secondary rounded-full animate-bounce [animation-delay:-0.3s]"></div>
+            <div className="w-1.5 h-1.5 bg-brand-secondary rounded-full animate-bounce [animation-delay:-0.15s]"></div>
+            <div className="w-1.5 h-1.5 bg-brand-secondary rounded-full animate-bounce"></div>
           </div>
         )}
       </div>
@@ -121,15 +122,15 @@ export default function Hero({ onOpenDemo }) {
   }, []);
 
   return (
-    <section className="relative w-full min-h-screen flex items-center justify-center bg-brand-primary overflow-hidden px-5 pt-20 pb-16">
+    <section className="relative w-full min-h-screen flex items-center justify-center bg-bg-dark overflow-hidden px-5 pt-20 pb-16">
       
       {/* Background Parallax Layer */}
       <div 
         className="absolute inset-0 z-0 pointer-events-none"
         style={{ transform: `translateY(${offsetY * 0.4}px)` }}
       >
-        <div className="absolute top-[10%] left-[-10%] w-[500px] h-[500px] bg-brand-secondary/10 rounded-full blur-[120px]"></div>
-        <div className="absolute bottom-[10%] right-[30%] w-[600px] h-[600px] bg-brand-accent/5 rounded-full blur-[150px]"></div>
+        <div className="absolute top-[10%] left-[-10%] w-[500px] h-[500px] bg-brand-secondary/5 rounded-full blur-[120px]"></div>
+        <div className="absolute bottom-[10%] right-[30%] w-[600px] h-[600px] bg-brand-secondary/10 rounded-full blur-[150px]"></div>
       </div>
       
       <div className="relative z-10 max-w-7xl mx-auto w-full flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-8">
@@ -138,26 +139,27 @@ export default function Hero({ onOpenDemo }) {
         <div className="flex flex-col items-start text-left space-y-8 lg:w-[55%] pt-10 lg:pt-0">
           
           <div 
-            className="fade-in-initial fade-in-active inline-flex items-center gap-2 px-4 py-2 rounded-full border border-brand-secondary/20 text-brand-secondary font-medium tracking-wide text-sm"
+            className="fade-in-initial fade-in-active inline-flex items-center gap-2 px-4 py-2 rounded-full border border-brand-secondary/20 bg-brand-secondary/5 text-brand-secondary font-semibold tracking-wider text-xs uppercase"
             style={{ animationDelay: '0.2s' }}
           >
-            <BotMessageSquare size={16} />
-            <span>Agente Inmobiliario Inteligente</span>
+            <BotMessageSquare size={14} />
+            <span>Inteligencia Artificial Real Estate</span>
           </div>
 
           <h1 
-            className="fade-in-initial fade-in-active font-bold text-text-main leading-[1.15] tracking-tight"
-            style={{ animationDelay: '0.5s', fontSize: 'clamp(36px, 5vw, 56px)' }}
+            className="fade-in-initial fade-in-active font-display font-extrabold text-white leading-[1.1] tracking-tight"
+            style={{ animationDelay: '0.5s', fontSize: 'clamp(38px, 6vw, 64px)' }}
           >
-            Tu inmobiliaria, atendiendo leads <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-secondary to-blue-400 italic">24/7</span><br />
-            — en piloto automático.
+            Vende más,<br />
+            atendiendo <span className="text-brand-secondary italic">leads 24/7</span><br />
+            en piloto automático.
           </h1>
           
           <p 
-            className="fade-in-initial fade-in-active text-lg max-w-2xl leading-relaxed text-text-muted font-normal"
+            className="fade-in-initial fade-in-active text-xl max-w-2xl leading-relaxed text-text-muted font-normal"
             style={{ animationDelay: '0.8s' }}
           >
-            LidIA responde consultas por WhatsApp, ofrece propiedades y agenda visitas automáticamente. Personalizado para tu negocio.
+            LidIA automatiza tus consultas por WhatsApp, califica interesados y agenda visitas sin que tengas que tocar el celular.
           </p>
 
           <div 

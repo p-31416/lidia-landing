@@ -96,18 +96,18 @@ export default function DemoModal({ onClose, onOpenPrivacy }) {
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
-      <div className="absolute inset-0 bg-brand-primary/95 backdrop-blur-md" onClick={onClose}></div>
+      <div className="absolute inset-0 bg-bg-dark/90 backdrop-blur-sm" onClick={onClose}></div>
 
-      <div className="relative w-full max-w-xl bg-[#0D1520] border border-white/10 rounded-[2.5rem] shadow-2xl p-8 md:p-12 overflow-y-auto max-h-[95vh]">
+      <div className="relative w-full max-w-xl bg-bg-light border border-white/10 rounded-[2.5rem] shadow-2xl p-8 md:p-12 overflow-y-auto max-h-[95vh] selection:bg-brand-secondary/30">
         
-        <button onClick={onClose} className="absolute top-8 right-8 text-white/40 hover:text-white transition-colors">
+        <button onClick={onClose} className="absolute top-8 right-8 text-white/20 hover:text-white transition-colors cursor-pointer">
           <X size={28} />
         </button>
 
         {!submitted ? (
           <>
             <div className="text-center mb-10">
-              <h2 className="text-4xl font-bold text-white mb-3">Reserva tu Demo</h2>
+              <h2 className="text-4xl font-display font-extrabold text-white mb-3">Reserva tu Demo</h2>
               <p className="text-text-muted font-light text-lg">Únete a la nueva era del Real Estate con IA.</p>
             </div>
 
@@ -136,11 +136,11 @@ export default function DemoModal({ onClose, onOpenPrivacy }) {
               <div className={showOtroInput ? 'md:col-span-1' : 'md:col-span-2'}>
                 <label className="block text-xs font-bold text-brand-secondary uppercase tracking-[0.2em] mb-2">Inmobiliaria *</label>
                 <select name="inmobiliaria" value={formData.inmobiliaria} onChange={handleChange}
-                  className="w-full px-6 py-4 rounded-2xl bg-[#1A2533] text-white border border-white/10 focus:border-brand-secondary outline-none transition-all appearance-none cursor-pointer">
-                  <option value="Independiente" className="bg-[#1A2533] text-white">Independiente</option>
-                  <option value="Remax" className="bg-[#1A2533] text-white">Remax</option>
-                  <option value="Century 21" className="bg-[#1A2533] text-white">Century 21</option>
-                  <option value="Otro" className="bg-[#1A2533] text-white">Otro / Cuál?</option>
+                  className="w-full px-6 py-4 rounded-2xl bg-bg-dark text-white border border-white/10 focus:border-brand-secondary outline-none transition-all appearance-none cursor-pointer">
+                  <option value="Independiente" className="bg-bg-dark text-white">Independiente</option>
+                  <option value="Remax" className="bg-bg-dark text-white">Remax</option>
+                  <option value="Century 21" className="bg-bg-dark text-white">Century 21</option>
+                  <option value="Otro" className="bg-bg-dark text-white">Otro / Cuál?</option>
                 </select>
               </div>
 
@@ -163,10 +163,10 @@ export default function DemoModal({ onClose, onOpenPrivacy }) {
               <div className="md:col-span-1">
                 <label className="block text-xs font-bold text-brand-secondary uppercase tracking-[0.2em] mb-2">Propiedades</label>
                 <select name="propiedades" value={formData.propiedades} onChange={handleChange}
-                  className="w-full px-6 py-4 rounded-2xl bg-[#1A2533] text-white border border-white/10 focus:border-brand-secondary outline-none transition-all appearance-none cursor-pointer">
-                  <option value="1-50" className="bg-[#1A2533] text-white">1 a 50 props</option>
-                  <option value="51-200" className="bg-[#1A2533] text-white">51 a 200 props</option>
-                  <option value="200+" className="bg-[#1A2533] text-white">200+ props</option>
+                  className="w-full px-6 py-4 rounded-2xl bg-bg-dark text-white border border-white/10 focus:border-brand-secondary outline-none transition-all appearance-none cursor-pointer">
+                  <option value="1-50" className="bg-bg-dark text-white">1 a 50 props</option>
+                  <option value="51-200" className="bg-bg-dark text-white">51 a 200 props</option>
+                  <option value="200+" className="bg-bg-dark text-white">200+ props</option>
                 </select>
               </div>
 
