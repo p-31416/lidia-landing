@@ -1,73 +1,39 @@
 import React from 'react';
+import logoOfficial from '../assets/logo-oficial-sinfondo.png';
 
 export default function BrandLogo({ className = "", showText = true, size = "md", iconOnly = false }) {
   const sizes = {
-    xs: "h-4",
-    sm: "h-6",
-    md: "h-10",
-    lg: "h-14",
-    xl: "h-20"
+    xs: "h-6",
+    sm: "h-8",
+    md: "h-12",
+    lg: "h-16",
+    xl: "h-24"
   };
 
-  // Adjusted Colors for High Contrast on Dark Background
-  const colorPrimary = "#FFFFFF"; // Changed to White for readability on dark background
-  const colorSecondary = "#00BCE4"; // Keep Cyan
-  const colorDarkAccent = "#002147"; // Keep official dark blue for subtle details if needed
-
   return (
-    <div className={`flex items-center gap-2 md:gap-3 ${className}`}>
-      {/* Isotype SVG - Exact Replica of Official Brand */}
-      <svg 
-        viewBox="0 0 100 100" 
-        className={`${sizes[size]} w-auto`} 
-        fill="none" 
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        {/* House outline with speech bubble tail */}
-        <path 
-          d="M50 12L18 38V75C18 78.3 20.7 81 24 81H45L35 92L55 81H76C79.3 81 82 78.3 82 75V38L50 12Z" 
-          stroke={colorPrimary} 
-          strokeWidth="4" 
-          strokeLinejoin="round"
-        />
-        
-        {/* The "Knob" dot on the house wall */}
-        <circle cx="32" cy="62" r="4" fill={colorPrimary} />
-        
-        {/* Exact Tech 'L' path inside */}
-        <path 
-          d="M48 32V64H72" 
-          stroke={colorSecondary} 
-          strokeWidth="6" 
-          strokeLinecap="round" 
-          strokeLinejoin="round"
-        />
-        
-        {/* Official circuit nodes */}
-        <circle cx="48" cy="32" r="3.5" fill={colorSecondary} />
-        <circle cx="72" cy="64" r="3.5" fill={colorSecondary} />
-        <circle cx="48" cy="48" r="2.5" fill={colorSecondary} />
-      </svg>
+    <div className={`flex items-center gap-3 ${className}`}>
+      {/* Official PNG Logo */}
+      <img 
+        src={logoOfficial} 
+        alt="LidIA Logo" 
+        className={`${sizes[size]} w-auto object-contain`}
+      />
 
-      {/* Text Component - Optimized for Legibility */}
+      {/* Tagline - Optimized for Legibility */}
       {showText && !iconOnly && (
-        <div className="flex flex-col leading-none">
-          <div className="flex items-baseline">
-            <span style={{ color: colorPrimary }} className="font-display font-bold tracking-tight text-xl md:text-2xl">
-              Lid
-            </span>
-            <span style={{ color: colorSecondary }} className="font-display font-bold tracking-tight text-xl md:text-2xl">
-              IA
-            </span>
-          </div>
+        <div className="flex flex-col leading-tight">
           <p 
-            className="text-[9px] md:text-[10px] font-semibold mt-1"
-            style={{ color: "rgba(255, 255, 255, 0.7)" }}
+            className="text-[10px] md:text-[11px] font-bold tracking-wide uppercase"
+            style={{ 
+              color: "rgba(255, 255, 255, 0.9)",
+              letterSpacing: "0.05em"
+            }}
           >
-            Lid<span style={{ color: colorSecondary }}>IA</span> tu Asesora inmobiliar<span style={{ color: colorSecondary }}>IA</span>
+            tu Asesora inmobiliar<span style={{ color: "#00BCE4" }}>IA</span>
           </p>
         </div>
       )}
     </div>
   );
 }
+
