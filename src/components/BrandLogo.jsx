@@ -9,62 +9,57 @@ export default function BrandLogo({ className = "", showText = true, size = "md"
     xl: "h-20"
   };
 
-  const colorPrimary = "#002147";
-  const colorSecondary = "#00BCE4";
+  // Official Colors
+  const colorPrimary = "#002147"; // Deep Blue
+  const colorSecondary = "#00BCE4"; // Cyan
 
   return (
-    <div className={`flex items-center gap-3 ${className}`}>
-      {/* Isotype SVG */}
+    <div className={`flex items-center gap-2 md:gap-3 ${className}`}>
+      {/* Isotype SVG - Minimalist Tech Style */}
       <svg 
         viewBox="0 0 100 100" 
-        className={`${sizes[size]} w-auto drop-shadow-xl`} 
+        className={`${sizes[size]} w-auto`} 
         fill="none" 
         xmlns="http://www.w3.org/2000/svg"
       >
-        <defs>
-          <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor={colorSecondary} />
-            <stop offset="100%" stopColor={colorPrimary} />
-          </linearGradient>
-        </defs>
-        
-        {/* House shape with rounded roof and speech tail */}
+        {/* Simplified House outline */}
         <path 
-          d="M50 8L12 38V82C12 86.4183 15.5817 90 20 90H80C84.4183 90 88 86.4183 88 82V38L50 8Z" 
-          fill="url(#logoGradient)" 
-        />
-        <path 
-          d="M28 90L15 98V90H28Z" 
-          fill={colorPrimary} 
+          d="M50 15L20 40V78C20 80.2 21.8 82 24 82H45L38 90L55 82H76C78.2 82 80 80.2 80 78V40L50 15Z" 
+          stroke={colorPrimary} 
+          strokeWidth="5" 
+          strokeLinejoin="round"
         />
         
-        {/* Refined 'L' with terminal points (Tech-style) */}
+        {/* Tech 'L' path */}
         <path 
-          d="M40 32V68H68" 
-          stroke="white" 
-          strokeWidth="8" 
+          d="M45 38V62H62" 
+          stroke={colorSecondary} 
+          strokeWidth="6" 
           strokeLinecap="round" 
-          strokeLinejoin="round" 
+          strokeLinejoin="round"
         />
-        {/* Logic points */}
-        <circle cx="40" cy="32" r="5" fill="white" />
-        <circle cx="68" cy="68" r="5" fill="white" />
-        <circle cx="58" cy="48" r="3" fill="white" fillOpacity="0.5" />
+        
+        {/* Nodes */}
+        <circle cx="45" cy="38" r="4" fill={colorSecondary} />
+        <circle cx="62" cy="62" r="4" fill={colorSecondary} />
       </svg>
 
       {/* Text Component */}
       {showText && !iconOnly && (
         <div className="flex flex-col leading-none">
           <div className="flex items-baseline">
-            <span className="font-display font-bold text-white tracking-tight text-xl md:text-2xl">
+            <span style={{ color: colorPrimary }} className="font-display font-bold tracking-tighter text-xl md:text-2xl uppercase">
               Lid
             </span>
-            <span className="font-display font-bold text-brand-secondary tracking-tight text-xl md:text-2xl">
+            <span style={{ color: colorSecondary }} className="font-display font-bold tracking-tighter text-xl md:text-2xl uppercase">
               IA
             </span>
           </div>
-          <p className="text-[10px] uppercase tracking-[0.3em] text-white/40 font-semibold mt-1">
-            Real Estate AI
+          <p 
+            style={{ color: colorPrimary }} 
+            className="text-[9px] md:text-[10px] font-semibold opacity-90 mt-0.5"
+          >
+            Lid<span style={{ color: colorSecondary }}>IA</span> tu Asesora inmobiliar<span style={{ color: colorSecondary }}>IA</span>
           </p>
         </div>
       )}
