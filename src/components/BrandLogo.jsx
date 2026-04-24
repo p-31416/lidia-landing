@@ -9,55 +9,60 @@ export default function BrandLogo({ className = "", showText = true, size = "md"
     xl: "h-20"
   };
 
-  // Official Colors
-  const colorPrimary = "#002147"; // Deep Blue
-  const colorSecondary = "#00BCE4"; // Cyan
+  // Adjusted Colors for High Contrast on Dark Background
+  const colorPrimary = "#FFFFFF"; // Changed to White for readability on dark background
+  const colorSecondary = "#00BCE4"; // Keep Cyan
+  const colorDarkAccent = "#002147"; // Keep official dark blue for subtle details if needed
 
   return (
     <div className={`flex items-center gap-2 md:gap-3 ${className}`}>
-      {/* Isotype SVG - Minimalist Tech Style */}
+      {/* Isotype SVG - Exact Replica of Official Brand */}
       <svg 
         viewBox="0 0 100 100" 
         className={`${sizes[size]} w-auto`} 
         fill="none" 
         xmlns="http://www.w3.org/2000/svg"
       >
-        {/* Simplified House outline */}
+        {/* House outline with speech bubble tail */}
         <path 
-          d="M50 15L20 40V78C20 80.2 21.8 82 24 82H45L38 90L55 82H76C78.2 82 80 80.2 80 78V40L50 15Z" 
+          d="M50 12L18 38V75C18 78.3 20.7 81 24 81H45L35 92L55 81H76C79.3 81 82 78.3 82 75V38L50 12Z" 
           stroke={colorPrimary} 
-          strokeWidth="5" 
+          strokeWidth="4" 
           strokeLinejoin="round"
         />
         
-        {/* Tech 'L' path */}
+        {/* The "Knob" dot on the house wall */}
+        <circle cx="32" cy="62" r="4" fill={colorPrimary} />
+        
+        {/* Exact Tech 'L' path inside */}
         <path 
-          d="M45 38V62H62" 
+          d="M48 32V64H72" 
           stroke={colorSecondary} 
           strokeWidth="6" 
           strokeLinecap="round" 
           strokeLinejoin="round"
         />
         
-        {/* Nodes */}
-        <circle cx="45" cy="38" r="4" fill={colorSecondary} />
-        <circle cx="62" cy="62" r="4" fill={colorSecondary} />
+        {/* Official circuit nodes */}
+        <circle cx="48" cy="32" r="3.5" fill={colorSecondary} />
+        <circle cx="72" cy="64" r="3.5" fill={colorSecondary} />
+        <circle cx="48" cy="48" r="2.5" fill={colorSecondary} />
       </svg>
 
-      {/* Text Component */}
+      {/* Text Component - Optimized for Legibility */}
       {showText && !iconOnly && (
         <div className="flex flex-col leading-none">
           <div className="flex items-baseline">
-            <span style={{ color: colorPrimary }} className="font-display font-bold tracking-tighter text-xl md:text-2xl uppercase">
+            <span style={{ color: colorPrimary }} className="font-display font-bold tracking-tight text-xl md:text-2xl">
               Lid
             </span>
-            <span style={{ color: colorSecondary }} className="font-display font-bold tracking-tighter text-xl md:text-2xl uppercase">
+            <span style={{ color: colorSecondary }} className="font-display font-bold tracking-tight text-xl md:text-2xl">
               IA
             </span>
           </div>
           <p 
-            style={{ color: colorPrimary }} 
-            className="text-[9px] md:text-[10px] font-semibold opacity-90 mt-0.5"
+            className="text-[9px] md:text-[10px] font-semibold mt-1"
+            style={{ color: "rgba(255, 255, 255, 0.7)" }}
           >
             Lid<span style={{ color: colorSecondary }}>IA</span> tu Asesora inmobiliar<span style={{ color: colorSecondary }}>IA</span>
           </p>
