@@ -39,8 +39,9 @@ export default function BrandLogo({ className = "", showText = true, size = "md"
               textShadow: "0 2px 4px rgba(0,0,0,0.3)"
             }}
           >
-            tu Asesora inmobiliar<span style={{ color: "#00BCE4" }}>IA</span>
+            Lid<span style={{ color: "#00BCE4" }}>IA</span> tu Asesora inmobiliar<span style={{ color: "#00BCE4" }}>IA</span>
           </p>
+
         </div>
       )}
     </div>
