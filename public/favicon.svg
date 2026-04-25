@@ -1,21 +1,10 @@
-<svg 
-  viewBox="0 0 100 100" 
-  fill="none" 
-  xmlns="http://www.w3.org/2000/svg"
->
-  {/* Rounded square background with the brand primary color */}
-  <rect width="100" height="100" rx="20" fill="#002147"/>
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <!-- Fondo circular blanco -->
+  <circle cx="50" cy="50" r="50" fill="#FFFFFF"/>
   
-  {/* Simplified Tech 'L' Path */}
-  <path 
-    d="M35 30V70H70" 
-    stroke="#00BCE4" 
-    stroke-width="12" 
-    stroke-linecap="round" 
-    stroke-linejoin="round"
-  />
+  <!-- Punto (.) -->
+  <circle cx="32" cy="65" r="6" fill="#00BCE4"/>
   
-  {/* Connection Nodes */}
-  <circle cx="35" cy="30" r="8" fill="#00BCE4"/>
-  <circle cx="70" cy="70" r="8" fill="#00BCE4"/>
+  <!-- Letra L -->
+  <path d="M 48 30 L 48 65 L 72 65" fill="none" stroke="#00BCE4" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>

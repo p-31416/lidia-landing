@@ -7,6 +7,7 @@ import DemoModal from './components/DemoModal';
 import Footer from './components/Footer';
 import PrivacyPolicy from './components/PrivacyPolicy';
 import Navbar from './components/Navbar';
+import FloatingChat from './components/FloatingChat';
 
 function App() {
   const [isDemoOpen, setIsDemoOpen] = useState(false);
@@ -32,6 +33,7 @@ function App() {
       )}
 
       <PrivacyPolicy isOpen={isPrivacyOpen} onClose={() => setIsPrivacyOpen(false)} />
+      <FloatingChat />
     </div>
   );
 }

@@ -10,7 +10,9 @@ export default function Footer({ onOpenPrivacy }) {
       <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-10">
         
         <div className="flex flex-col items-center md:items-start group">
-          <BrandLogo size="lg" className="mb-4" />
+          <a href="#" className="inline-block transition-transform hover:scale-105">
+            <BrandLogo size="lg" className="mb-4" />
+          </a>
           <p className="text-sm font-light text-center md:text-left text-white/40 leading-relaxed">
             Una solución inteligente de <span className="text-white/80 font-medium group-hover:text-brand-secondary transition-colors">Pitau Tech</span><br />
             Liderando la automatización inmobiliaria.
