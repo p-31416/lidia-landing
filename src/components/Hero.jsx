@@ -6,7 +6,7 @@ const CHAT_SEQUENCE = [
   { type: 'lead', text: "Hola, busco un departamento de 2 ambientes en Palermo", time: "10:30" },
   { type: 'lidia', text: "¡Hola! Soy LidIA. Tenemos 2 opciones que se ajustan a tu búsqueda: un Depto en Palermo Soho y un PH en Palermo Hollywood. ¿Querés que te las comparta?", time: "10:30" },
   { type: 'lead', text: "Sí, mandame", time: "10:31" },
-  { type: 'lidia', text: "Opción 1: Depto Palermo Soho, 2 amb, 52m², USD 148.000. \nOpción 2: PH Palermo Hollywood, 2 amb, 60m², USD 150.000.", time: "10:31" },
+  { type: 'lidia', text: "- Depto Palermo Soho, 2 amb, 52m², USD 148.000. \n  - PH Palermo Hollywood, 2 amb, 60m², USD 150.000.", time: "10:31" },
   { type: 'lead', text: "Me interesa el primero", time: "10:32" },
   { type: 'lidia', text: "¡Excelente elección! ¿Querés ver fotos o preferís agendar una visita?", time: "10:32" },
   { type: 'lead', text: "Me gustaría agendar una visita", time: "10:33" },
@@ -158,30 +158,30 @@ export default function Hero({ onOpenDemo }) {
           </h1>
 
           <div
-            className="fade-in-initial fade-in-active text-xl max-w-2xl leading-relaxed text-text-muted font-normal"
+            className="fade-in-initial fade-in-active text-xl w-full leading-relaxed text-text-muted font-normal"
             style={{ animationDelay: '0.8s' }}
           >
-            <p className="mb-4">
+            <p className="mb-6 max-w-2xl">
               LidIA es un agente de IA de nueva generación, que se convertirá en tu mano derecha. Mientras estás en una visita, en plena reunión o disfrutando de tu tiempo libre, ella asegura una atención <strong className="text-white">cálida y profesional</strong>:
             </p>
-            
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-8 mt-4">
-              <ul className="space-y-2 ml-1 text-lg shrink-0">
-                <li>💬 Responde consultas</li>
-                <li>🏠 Ofrece propiedades</li>
-                <li>📸 Muestra fotos</li>
-                <li>📅 Agenda visitas</li>
+
+            <div className="flex flex-col gap-7 w-full bg-white/5 p-6 sm:p-8 rounded-2xl border border-white/10 shadow-lg">
+              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-lg text-white/90 font-medium w-full">
+                <li className="flex items-center gap-3"><span>💬</span> Responde consultas</li>
+                <li className="flex items-center gap-3"><span>🏠</span> Ofrece propiedades</li>
+                <li className="flex items-center gap-3"><span>📸</span> Muestra fotos</li>
+                <li className="flex items-center gap-3"><span>📅</span> Agenda visitas</li>
               </ul>
 
-              <div className="flex flex-col gap-3 w-full sm:max-w-[340px]">
+              <div className="flex flex-col gap-3 w-full border-t border-white/10 pt-6">
                 <button
                   onClick={onOpenDemo}
-                  className="pulse-soft relative inline-flex items-center justify-center gap-3 px-8 py-4.5 text-lg font-bold text-brand-primary bg-white rounded-xl overflow-hidden w-full transition-transform hover:scale-[1.03] cursor-pointer"
+                  className="group relative inline-flex items-center justify-center gap-3 px-8 py-4.5 text-lg font-bold text-brand-primary bg-white rounded-xl w-full transition-all duration-300 hover:scale-[1.02] shadow-[0_0_15px_rgba(0,188,228,0.2)] hover:shadow-[0_0_40px_rgba(0,188,228,0.7)] cursor-pointer"
                 >
-                  <CalendarCheck className="relative z-10" size={22} />
+                  <CalendarCheck className="relative z-10 transition-transform group-hover:rotate-12" size={24} />
                   <span className="relative z-10 tracking-wide">Quiero mi demo personalizada</span>
                 </button>
-                <p className="text-sm text-text-muted/80 font-medium text-center sm:text-left leading-snug">
+                <p className="text-sm text-text-muted/80 font-medium text-center leading-snug">
                   Agendá una demostración gratuita de 20' y descubrí cuántas horas al día ahorrarás con LidIA trabajando para vos.
                 </p>
               </div>
