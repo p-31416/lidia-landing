@@ -136,7 +136,7 @@ export default function Hero({ onOpenDemo }) {
         <div className="absolute bottom-[10%] right-[30%] w-[600px] h-[600px] bg-brand-secondary/10 rounded-full blur-[150px]"></div>
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto w-full flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-8">
+      <div className="relative z-10 max-w-6xl mx-auto w-full flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-8">
 
         {/* Text Content */}
         <div className="flex flex-col items-start text-left space-y-8 lg:w-[55%] pt-10 lg:pt-0">
@@ -211,7 +211,7 @@ export default function Hero({ onOpenDemo }) {
 
         {/* Mockup Container */}
         <div
-          className="fade-in-initial fade-in-active lg:w-[45%] flex justify-center lg:justify-end pb-10 lg:pb-0"
+          className="fade-in-initial fade-in-active lg:w-[45%] flex justify-center lg:justify-center pb-10 lg:pb-0"
           style={{ animationDelay: '1.4s' }}
         >
           <WhatsAppMockup />
