@@ -139,7 +139,7 @@ export default function Hero({ onOpenDemo }) {
       <div className="relative z-10 max-w-6xl mx-auto w-full flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-8">
 
         {/* Text Content */}
-        <div className="flex flex-col items-start text-left space-y-8 lg:w-[55%] pt-10 lg:pt-0">
+        <div className="flex flex-col items-start text-left space-y-8 lg:w-[62%] pt-10 lg:pt-0">
 
           <div
             className="fade-in-initial fade-in-active inline-flex items-center gap-2 px-4 py-2 rounded-full border border-brand-secondary/20 bg-brand-secondary/5 text-brand-secondary font-semibold tracking-wider text-xs uppercase"
@@ -150,18 +150,17 @@ export default function Hero({ onOpenDemo }) {
           </div>
 
           <h1
-            className="fade-in-initial fade-in-active font-display font-extrabold text-white leading-[1.1] tracking-tight"
+            className="fade-in-initial fade-in-active font-display font-extrabold text-white leading-[1.1] tracking-tight w-full"
             style={{ animationDelay: '0.5s', fontSize: 'clamp(38px, 6vw, 64px)' }}
           >
-            LidIA: Tu asesora inteligente<br />
-            con respuesta <span className="text-brand-secondary italic">inmediata 24/7</span>
+            LidIA: Tu asesora inteligente con respuesta <span className="text-brand-secondary italic">inmediata 24/7</span>
           </h1>
 
           <div
             className="fade-in-initial fade-in-active text-xl w-full leading-relaxed text-text-muted font-normal"
             style={{ animationDelay: '0.8s' }}
           >
-            <p className="mb-6 max-w-2xl">
+            <p className="mb-6 w-full">
               LidIA es un agente de IA de nueva generación, que se convertirá en tu mano derecha. Mientras estás en una visita, en plena reunión o disfrutando de tu tiempo libre, ella asegura una atención <strong className="text-white">cálida y profesional</strong>:
             </p>
 
@@ -211,7 +210,7 @@ export default function Hero({ onOpenDemo }) {
 
         {/* Mockup Container */}
         <div
-          className="fade-in-initial fade-in-active lg:w-[45%] flex justify-center lg:justify-center pb-10 lg:pb-0"
+          className="fade-in-initial fade-in-active lg:w-[38%] flex justify-center lg:justify-center pb-10 lg:pb-0"
           style={{ animationDelay: '1.4s' }}
         >
           <WhatsAppMockup />
