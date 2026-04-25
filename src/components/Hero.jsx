@@ -136,84 +136,91 @@ export default function Hero({ onOpenDemo }) {
         <div className="absolute bottom-[10%] right-[30%] w-[600px] h-[600px] bg-brand-secondary/10 rounded-full blur-[150px]"></div>
       </div>
 
-      <div className="relative z-10 max-w-6xl mx-auto w-full flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-8">
+      <div className="relative z-10 max-w-[1400px] mx-auto w-full flex flex-col gap-12 lg:gap-16">
+        
+        {/* Top Part: Text + Mockup */}
+        <div className="flex flex-col lg:flex-row items-center lg:items-start justify-between gap-12">
+          
+          {/* Text Content */}
+          <div className="flex flex-col items-start text-left space-y-8 lg:w-[60%] pt-10 lg:pt-0">
+            <div
+              className="fade-in-initial fade-in-active inline-flex items-center gap-2 px-4 py-2 rounded-full border border-brand-secondary/20 bg-brand-secondary/5 text-brand-secondary font-semibold tracking-wider text-xs uppercase"
+              style={{ animationDelay: '0.2s' }}
+            >
+              <BotMessageSquare size={14} />
+              <span>Inteligencia Artificial Real Estate</span>
+            </div>
 
-        {/* Text Content */}
-        <div className="flex flex-col items-start text-left space-y-8 lg:w-[62%] pt-10 lg:pt-0">
+            <h1
+              className="fade-in-initial fade-in-active font-display font-extrabold text-white leading-[1.1] tracking-tight w-full"
+              style={{ animationDelay: '0.5s', fontSize: 'clamp(38px, 6vw, 64px)' }}
+            >
+              LidIA: Tu asesora inteligente con respuesta <span className="text-brand-secondary italic">inmediata 24/7</span>
+            </h1>
 
-          <div
-            className="fade-in-initial fade-in-active inline-flex items-center gap-2 px-4 py-2 rounded-full border border-brand-secondary/20 bg-brand-secondary/5 text-brand-secondary font-semibold tracking-wider text-xs uppercase"
-            style={{ animationDelay: '0.2s' }}
-          >
-            <BotMessageSquare size={14} />
-            <span>Inteligencia Artificial Real Estate</span>
-          </div>
-
-          <h1
-            className="fade-in-initial fade-in-active font-display font-extrabold text-white leading-[1.1] tracking-tight w-full"
-            style={{ animationDelay: '0.5s', fontSize: 'clamp(38px, 6vw, 64px)' }}
-          >
-            LidIA: Tu asesora inteligente con respuesta <span className="text-brand-secondary italic">inmediata 24/7</span>
-          </h1>
-
-          <div
-            className="fade-in-initial fade-in-active text-xl w-full leading-relaxed text-text-muted font-normal"
-            style={{ animationDelay: '0.8s' }}
-          >
-            <p className="mb-6 w-full">
-              LidIA es un agente de IA de nueva generación, que se convertirá en tu mano derecha. Mientras estás en una visita, en plena reunión o disfrutando de tu tiempo libre, ella asegura una atención <strong className="text-white">cálida y profesional</strong>:
-            </p>
-
-            <div className="flex flex-col gap-7 w-full bg-white/5 p-6 sm:p-8 rounded-2xl border border-white/10 shadow-lg">
-              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-lg text-white/90 font-medium w-full">
-                <li className="flex items-center gap-3"><span>💬</span> Responde consultas</li>
-                <li className="flex items-center gap-3"><span>🏠</span> Ofrece propiedades</li>
-                <li className="flex items-center gap-3"><span>📸</span> Muestra fotos</li>
-                <li className="flex items-center gap-3"><span>📅</span> Agenda visitas</li>
-              </ul>
-
-              <div className="flex flex-col gap-3 w-full border-t border-white/10 pt-6">
-                <button
-                  onClick={onOpenDemo}
-                  className="group relative inline-flex items-center justify-center gap-3 px-8 py-4.5 text-lg font-bold text-brand-primary bg-white rounded-xl w-full transition-all duration-300 hover:scale-[1.02] shadow-[0_0_15px_rgba(0,188,228,0.2)] hover:shadow-[0_0_40px_rgba(0,188,228,0.7)] cursor-pointer"
-                >
-                  <CalendarCheck className="relative z-10 transition-transform group-hover:rotate-12" size={24} />
-                  <span className="relative z-10 tracking-wide">Quiero mi demo personalizada</span>
-                </button>
-                <p className="text-sm text-text-muted/80 font-medium text-center leading-snug">
-                  Agendá una demostración gratuita de 20' y descubrí cuántas horas al día ahorrarás con LidIA trabajando para vos.
-                </p>
-              </div>
+            <div
+              className="fade-in-initial fade-in-active text-xl w-full leading-relaxed text-text-muted font-normal"
+              style={{ animationDelay: '0.8s' }}
+            >
+              <p className="w-full">
+                LidIA es un agente de IA de nueva generación, que se convertirá en tu mano derecha. Mientras estás en una visita, en plena reunión o disfrutando de tu tiempo libre, ella asegura una atención <strong className="text-white">cálida y profesional</strong>:
+              </p>
             </div>
           </div>
 
+          {/* Mockup Container */}
           <div
-            className="fade-in-initial fade-in-active pt-8 w-full flex flex-col gap-6"
-            style={{ animationDelay: '1.1s' }}
+            className="fade-in-initial fade-in-active lg:w-[35%] flex justify-center lg:justify-end pb-10 lg:pb-0"
+            style={{ animationDelay: '1.4s' }}
           >
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-y-3 sm:gap-x-4 pt-4 border-t border-white/5">
-              <div className="flex items-center gap-2 text-sm text-white/90 font-medium">
-                <CheckCircle2 className="text-[#FF7A00]" size={18} />
-                Implementado en pocos días
-              </div>
-              <div className="flex items-center gap-2 text-sm text-white/90 font-medium">
-                <CheckCircle2 className="text-[#FF7A00]" size={18} />
-                Entrenado con tu cartera
-              </div>
-              <div className="flex items-center gap-2 text-sm text-white/90 font-medium">
-                <CheckCircle2 className="text-[#FF7A00]" size={18} />
-                Llave en mano para WhatsApp
-              </div>
-            </div>
+            <WhatsAppMockup />
           </div>
         </div>
 
-        {/* Mockup Container */}
-        <div
-          className="fade-in-initial fade-in-active lg:w-[38%] flex justify-center lg:justify-center pb-10 lg:pb-0"
-          style={{ animationDelay: '1.4s' }}
-        >
-          <WhatsAppMockup />
+        {/* Bottom Part: CTA Card & Features */}
+        <div className="w-full flex flex-col gap-8">
+          <div 
+            className="fade-in-initial fade-in-active flex flex-col gap-7 w-full bg-white/5 p-6 sm:p-10 rounded-3xl border border-white/10 shadow-2xl backdrop-blur-sm"
+            style={{ animationDelay: '1.1s' }}
+          >
+            <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-lg text-white/90 font-medium w-full">
+              <li className="flex items-center gap-3 bg-white/5 p-4 rounded-xl border border-white/5 hover:border-brand-secondary/30 transition-colors"><span>💬</span> Responde consultas</li>
+              <li className="flex items-center gap-3 bg-white/5 p-4 rounded-xl border border-white/5 hover:border-brand-secondary/30 transition-colors"><span>🏠</span> Ofrece propiedades</li>
+              <li className="flex items-center gap-3 bg-white/5 p-4 rounded-xl border border-white/5 hover:border-brand-secondary/30 transition-colors"><span>📸</span> Muestra fotos</li>
+              <li className="flex items-center gap-3 bg-white/5 p-4 rounded-xl border border-white/5 hover:border-brand-secondary/30 transition-colors"><span>📅</span> Agenda visitas</li>
+            </ul>
+
+            <div className="flex flex-col gap-4 w-full border-t border-white/10 pt-8">
+              <button
+                onClick={onOpenDemo}
+                className="group relative inline-flex items-center justify-center gap-4 px-10 py-5 text-xl font-bold text-brand-primary bg-white rounded-2xl w-full transition-all duration-300 hover:scale-[1.01] shadow-[0_0_20px_rgba(0,188,228,0.2)] hover:shadow-[0_0_50px_rgba(0,188,228,0.6)] cursor-pointer"
+              >
+                <CalendarCheck className="relative z-10 transition-transform group-hover:rotate-12" size={26} />
+                <span className="relative z-10 tracking-wide">Quiero mi demo personalizada</span>
+              </button>
+              <p className="text-base text-text-muted font-medium text-center leading-snug">
+                Agendá una demostración gratuita de 20' y descubrí cuántas horas al día ahorrarás con LidIA trabajando para vos.
+              </p>
+            </div>
+          </div>
+
+          <div
+            className="fade-in-initial fade-in-active grid grid-cols-1 sm:grid-cols-3 gap-y-4 sm:gap-x-8 pt-4 w-full"
+            style={{ animationDelay: '1.6s' }}
+          >
+            <div className="flex items-center gap-3 text-base text-white/90 font-medium">
+              <CheckCircle2 className="text-[#FF7A00]" size={20} />
+              Implementado en pocos días
+            </div>
+            <div className="flex items-center gap-3 text-base text-white/90 font-medium">
+              <CheckCircle2 className="text-[#FF7A00]" size={20} />
+              Entrenado con tu cartera
+            </div>
+            <div className="flex items-center gap-3 text-base text-white/90 font-medium">
+              <CheckCircle2 className="text-[#FF7A00]" size={20} />
+              Llave en mano para WhatsApp
+            </div>
+          </div>
         </div>
 
       </div>
