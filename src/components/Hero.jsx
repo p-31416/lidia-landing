@@ -10,9 +10,11 @@ const CHAT_SEQUENCE = [
   { type: 'lead', text: "Me interesa el primero", time: "10:32" },
   { type: 'lidia', text: "¡Excelente elección! ¿Querés ver fotos o preferís agendar una visita?", time: "10:32" },
   { type: 'lead', text: "Me gustaría agendar una visita", time: "10:33" },
-  { type: 'lidia', text: "Perfecto. ¿Qué día y horario te queda mejor? Tengo turnos el martes 28 a las 10hs o el miércoles 29 a las 16hs", time: "10:33" },
-  { type: 'lead', text: "El martes por la tarde está perfecto, tipo 17/18hs", time: "10:34" },
-  { type: 'lidia', text: "¡Listo! Agendé tu reunión para el martes 28/04 a las 17:00hs. Te llegará un recordatorio 24hs antes con todos los detalles.", time: "10:34" }
+  { type: 'lidia', text: "Perfecto. ¿Qué día y horario te queda mejor?", time: "10:33" },
+  { type: 'lead', text: "El martes por la tarde estaría perfecto, tipo 17/18hs", time: "10:34" },
+  { type: 'lidia', text: "Tengo horarios disponibles el martes 28 a las 17hs o el miércoles 29 a las 18hs", time: "10:34" },
+  { type: 'lead', text: "El martes por la tarde estaría perfecto, tipo 17/18hs", time: "10:36" },
+  { type: 'lidia', text: "¡Listo! Agendé tu reunión para el martes 28/04 a las 17:00hs. Te llegará un recordatorio 24hs antes con todos los detalles.", time: "10:36" }
 ];
 
 function WhatsAppMockup() {
@@ -78,8 +80,8 @@ function WhatsAppMockup() {
           <div
             key={idx}
             className={`flex flex-col max-w-[85%] rounded-2xl px-3 py-2.5 text-[14px] leading-snug shadow-lg ${msg.type === 'lead'
-                ? 'self-end bg-[#005C4B] text-[#E9EDEF] rounded-tr-none'
-                : 'self-start bg-[#202C33] text-[#E9EDEF] rounded-tl-none border-l-2 border-brand-secondary/50'
+              ? 'self-end bg-[#005C4B] text-[#E9EDEF] rounded-tr-none'
+              : 'self-start bg-[#202C33] text-[#E9EDEF] rounded-tl-none border-l-2 border-brand-secondary/50'
               }`}
           >
             <span className="mb-1 font-medium whitespace-pre-wrap">{msg.text}</span>
@@ -159,35 +161,38 @@ export default function Hero({ onOpenDemo }) {
             className="fade-in-initial fade-in-active text-xl max-w-2xl leading-relaxed text-text-muted font-normal"
             style={{ animationDelay: '0.8s' }}
           >
-            <p className="mb-3">
+            <p className="mb-4">
               LidIA es un agente de IA de nueva generación, que se convertirá en tu mano derecha. Mientras estás en una visita, en plena reunión o disfrutando de tu tiempo libre, ella asegura una atención <strong className="text-white">cálida y profesional</strong>:
             </p>
-            <ul className="space-y-1 ml-1 text-lg">
-              <li>💬 Responde consultas</li>
-              <li>🏠 Ofrece propiedades</li>
-              <li>📸 Muestra fotos</li>
-              <li>📅 Agenda visitas</li>
-            </ul>
+            
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-8 mt-4">
+              <ul className="space-y-2 ml-1 text-lg shrink-0">
+                <li>💬 Responde consultas</li>
+                <li>🏠 Ofrece propiedades</li>
+                <li>📸 Muestra fotos</li>
+                <li>📅 Agenda visitas</li>
+              </ul>
+
+              <div className="flex flex-col gap-3 w-full sm:max-w-[340px]">
+                <button
+                  onClick={onOpenDemo}
+                  className="pulse-soft relative inline-flex items-center justify-center gap-3 px-8 py-4.5 text-lg font-bold text-brand-primary bg-white rounded-xl overflow-hidden w-full transition-transform hover:scale-[1.03] cursor-pointer"
+                >
+                  <CalendarCheck className="relative z-10" size={22} />
+                  <span className="relative z-10 tracking-wide">Quiero mi demo personalizada</span>
+                </button>
+                <p className="text-sm text-text-muted/80 font-medium text-center sm:text-left leading-snug">
+                  Agendá una demostración gratuita de 20' y descubrí cuántas horas al día ahorrarás con LidIA trabajando para vos.
+                </p>
+              </div>
+            </div>
           </div>
 
           <div
-            className="fade-in-initial fade-in-active pt-6 w-full flex flex-col gap-6"
+            className="fade-in-initial fade-in-active pt-8 w-full flex flex-col gap-6"
             style={{ animationDelay: '1.1s' }}
           >
-            <div className="flex flex-col gap-3 w-full sm:max-w-[340px]">
-              <button
-                onClick={onOpenDemo}
-                className="pulse-soft relative inline-flex items-center justify-center gap-3 px-8 py-4.5 text-lg font-bold text-brand-primary bg-white rounded-xl overflow-hidden w-full transition-transform hover:scale-[1.03] cursor-pointer"
-              >
-                <CalendarCheck className="relative z-10" size={22} />
-                <span className="relative z-10 tracking-wide">Quiero mi demo personalizada</span>
-              </button>
-              <p className="text-sm text-text-muted/80 font-medium text-center sm:text-left leading-snug">
-                Agendá una demostración gratuita de 20' y descubrí cuántas horas al día ahorrarás con LidIA trabajando para vos.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-y-3 sm:gap-x-4 pt-4">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-y-3 sm:gap-x-4 pt-4 border-t border-white/5">
               <div className="flex items-center gap-2 text-sm text-white/90 font-medium">
                 <CheckCircle2 className="text-[#FF7A00]" size={18} />
                 Implementado en pocos días
